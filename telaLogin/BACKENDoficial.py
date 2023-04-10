@@ -1,4 +1,3 @@
-# Abrindo o arquivo original em modo leitura
 import os
 import time
 
@@ -19,15 +18,11 @@ conteudo = conteudo.replace('serie><nNF>','	')
 conteudo = conteudo.replace('</nNF><dhEmi>','	')
 conteudo = conteudo.replace('</dhEmi><tpNF>1</tpNF>','	')
 conteudo = conteudo.replace('.',',')
-""" conteudo = conteudo.replace('T0','	')
-conteudo = conteudo.replace('T1','	')
-conteudo = conteudo.replace('T2','	') """
-
 
 with open('arquivo_atualizado.txt', 'w') as f: # Conteúdo gerado como um novo arquivo atualizado #
      f.write(conteudo)
     
-""" time.sleep(5)
+time.sleep(2)
 
 filename = "arquivo_atualizado.txt" # Exclusão
 
@@ -35,4 +30,4 @@ if os.path.exists(filename): # Verifica se o arquivo existe
     os.remove(filename)    # Exclui o arquivo
     print(f"Arquivo {filename} Excluído com sucesso.")
 else:
-    print(f"Arquivo {filename} Não encontrado.") """
+    print(f"Arquivo {filename} Não encontrado.")

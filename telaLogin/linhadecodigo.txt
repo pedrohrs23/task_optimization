@@ -1,0 +1,32 @@
+        self.conecta_db()
+
+        self.cursor.execute("""
+            INSERT INTO Usuarios(Username, Email, Senha, Confirma_Senha)
+            VALUES(?,?,?,?)""", (self.username_cadastro, self.email_cadastro, self.password_cadastro, self.confirma_password_cadastro))
+
+
+class BackEnd():
+    def conecta_db(self):
+        self.conn = sqlite3.connect("Sistema_cadastro.db")
+        self.cursor = self.conn.cursor()
+        print("Banco de dados conectado")
+
+    def desconecta_db(self):
+        self.conn.close()
+        print("Banco de dados desconectado")
+
+    def criar_tabela(self):
+        self.conecta_db()
+
+        self.cursor.execute("""
+            CREATE TABLE IF NOT EXISTS Usuarios(
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                Username TEXT NOT NULL,
+                Email TEXT NOT NULL,
+                Senha TEXT NOT NULL,
+                Confirma TEXT NOT NULL,
+            );
+        """)
+        self.conn.commit()
+        print("Tabela criada com sucesso!")
+        self.desconecta_db()
